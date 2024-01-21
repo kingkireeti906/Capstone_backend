@@ -1,10 +1,18 @@
 const express= require('express');
+const auth=require('./Routes/auth.js')
+
+
 //create a server
 const app=express();
 //env files access
 const dotenv=require('dotenv');
 dotenv.config()
 const port=process.env.port
+
+//Db connection
+const Db= require('./config/./Db.js')
+app.use(express.json());
+
 //health api
 app.get('/health',(req,res)=>{
     res.json({
@@ -13,7 +21,7 @@ app.get('/health',(req,res)=>{
        "time":new Date(),
     })
 });
-
+app.use('/register',auth);
 app.listen(port,(err)=>{
 
 if(err)
