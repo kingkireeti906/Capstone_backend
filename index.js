@@ -1,6 +1,6 @@
 const express= require('express');
 const auth=require('./Routes/auth.js')
-
+const job =require('./Routes/job.js')
 
 //create a server
 const app=express();
@@ -21,16 +21,12 @@ app.get('/health',(req,res)=>{
        "time":new Date(),
     })
 });
-app.use('/register',auth);
+app.use("/api/v1/auth", auth);
+app.use("/api/v1/job", job);
 app.listen(port,(err)=>{
 
 if(err)
-{
-    console.log("something went wrng on port")
-}
+console.log("something went wrng on port")
 else
-{
 console.log(`'port is working ${port}`)
-}
-}
-)
+})
