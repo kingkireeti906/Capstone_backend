@@ -22,6 +22,10 @@ const jobSchema = new mongoose.Schema({
       
         required: true,
     },
+    skills: {
+        type: [String],
+        required:true,
+      }
 });
 //model create
 const job = mongoose.model("Job", jobSchema);
